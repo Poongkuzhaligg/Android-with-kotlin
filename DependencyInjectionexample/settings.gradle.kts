@@ -13,7 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "My Application"
-include(":app")
-include(":app")
+rootProject.name = "Dependency Injection example"
 include(":app")
