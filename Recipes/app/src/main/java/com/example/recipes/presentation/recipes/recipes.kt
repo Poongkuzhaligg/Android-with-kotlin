@@ -5,13 +5,17 @@ import androidx.wear.compose.material.Text
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -20,6 +24,7 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,11 +35,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.wear.compose.foundation.lazy.items
 import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
+import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.Chip
 import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.ListHeader
 import androidx.wear.compose.material.PositionIndicator
 import androidx.wear.compose.material.Scaffold
+import androidx.wear.compose.material.Shapes
 import androidx.wear.compose.material.TimeText
 import androidx.wear.compose.material.Vignette
 import androidx.wear.compose.material.VignettePosition
@@ -42,6 +49,7 @@ import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.SwipeDismissableNavHostState
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
 import com.example.recipes.presentation.model.RecipeDetail
+import com.example.recipes.presentation.reusableComponents.ChipLayout
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.StateFlow
 
@@ -50,16 +58,17 @@ fun RecipeScreen(navController: NavController) {
     val recipeViewModel: RecipeViewModel = hiltViewModel()
     val recipesFlow: StateFlow<List<RecipeDetail>> = recipeViewModel.fetchRecipes()
     val recipes: List<RecipeDetail> by recipesFlow.collectAsState(initial = emptyList())
-
+    val listState = rememberScalingLazyListState()
     Scaffold(
         positionIndicator = {
-            PositionIndicator(scalingLazyListState = rememberScalingLazyListState())
+            PositionIndicator(scalingLazyListState = listState)
         },
         vignette = { Vignette(vignettePosition = VignettePosition.TopAndBottom)
         }
     ) {
         androidx.wear.compose.foundation.lazy.ScalingLazyColumn(
             modifier = Modifier.fillMaxSize(),
+            state = listState,
             contentPadding = PaddingValues(
                 top = 10.dp,
                 start = 10.dp,
@@ -71,6 +80,7 @@ fun RecipeScreen(navController: NavController) {
             item { ListHeader {
                 Text(text = "Recipe")
             } }
+
             items(recipes) { recipe ->
                 Chip(
                     modifier = Modifier
@@ -96,6 +106,25 @@ fun RecipeScreen(navController: NavController) {
                     onClick = {
                         navController.navigate("recipeDetails/${recipe.id}")
                     }
+                )
+            }
+
+            item {
+                Chip(
+                    modifier = Modifier
+                        .padding(top = 10.dp)
+                        .height(30.dp),
+                    shape = RoundedCornerShape(60),
+                    label = { Text(text = "Add Recipe", fontSize = 10.sp, modifier = Modifier.fillMaxWidth(),) },
+                    onClick = { navController.navigate("addRecipe") },
+                    icon = {
+                        Icon(
+                            painter = painterResource(id = android.R.drawable.ic_input_add),
+                            contentDescription = "Add",
+                            modifier = Modifier.size(12.dp),
+                            tint = Color.Black
+                        )
+                    },
                 )
             }
         }

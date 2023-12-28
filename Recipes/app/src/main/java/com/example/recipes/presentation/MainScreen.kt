@@ -10,6 +10,8 @@ import androidx.navigation.navArgument
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.composable
+import com.example.recipes.presentation.addRecipe.AddRecipeScreen
+import com.example.recipes.presentation.addRecipe.addInput.AddInputScreen
 import com.example.recipes.presentation.recipeDetails.RecipeDetailScreen
 import com.example.recipes.presentation.recipes.RecipeScreen
 
@@ -25,7 +27,14 @@ fun MainScreen(navController: NavHostController) {
         }
         composable("recipeDetails/{recipeId}", arguments = listOf(navArgument("recipeId") { type = NavType.IntType })) {
             val recipeId = it.arguments?.getInt("recipeId") ?: 0
-            RecipeDetailScreen(navController = navController,recipeId)
+            RecipeDetailScreen(recipeId)
+        }
+        composable("addRecipe") {
+            AddRecipeScreen(navController = navController )
+        }
+        composable("addInput/{inputName}", arguments = listOf(navArgument("inputName") { type = NavType.StringType })) {
+            val inputName = it.arguments?.getString("inputName") ?: ""
+            AddInputScreen(navController = navController, inputName )
         }
     }
 }

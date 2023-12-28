@@ -36,20 +36,11 @@ fun ButtonExample(
     }
 }
 
-@Composable
-fun TextExample(modifier: Modifier, text: String) {
-    Text(
-        modifier = modifier,
-        textAlign = TextAlign.Center,
-        color = MaterialTheme.colors.primary,
-        text = text
-    )
-}
 
 @Composable
 fun ChipLayout(modifier: Modifier, label: String) {
     Chip(
         modifier = modifier,
-        label = { Text(text = label, fontSize = 12.sp) },
+        label = { Text(text = label, fontSize = 8.sp, ) },
         onClick = { /*TODO*/ })
 }

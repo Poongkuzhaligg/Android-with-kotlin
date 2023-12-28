@@ -23,7 +23,7 @@ class RecipeViewModel @Inject constructor(private val repository: RecipeItemsRep
     }
     fun fetchRecipes(): StateFlow<List<RecipeDetail>> = recipes
 
-    fun formatTime(timeInSeconds: Long, forDisplay: Boolean): String {
+    fun formatTime(timeInSeconds: Int, forDisplay: Boolean): String {
         val timeInMinutes = timeInSeconds / 60
         val hours = timeInMinutes / 60
         val minutes = timeInMinutes % 60
