@@ -1,0 +1,81 @@
+[
+  {
+    "title": "Pina Colada",
+    "id": 0,
+    "recipeImg": "",
+    "prepTime": 600,
+    "cookTime": 0,
+    "ingredients": [
+      {"name": "Pineapples", "isChecked": false},
+      {"name": "Coconut milk", "isChecked": false},
+      {"name": "Ice cubes", "isChecked": false}]
+  },
+  {
+    "title": "Chocolate Chip Cookies",
+    "id": 1,
+    "recipeImg": "",
+    "prepTime": 900,
+    "cookTime": 1200,
+    "ingredients": [
+      {"name": "Unsalted butter", "isChecked": false},
+      {"name": "Sugar", "isChecked": false},
+      {"name": "Salt", "isChecked": false},
+      {"name": "Vanilla extract", "isChecked": "false"},
+      {"name": "Brown sugar", "isChecked": false},
+      {"name":"Baking soda", "isChecked": false},
+      {"name": "Flour", "isChecked": false},
+      {"name": "Chocolate Chunks", "isChecked": false},
+      {"name": "Milk", "isChecked": false}]
+  },
+  {
+    "title": "Creamy Corn",
+    "id": 2,
+    "recipeImg": "",
+    "prepTime": 300,
+    "cookTime": 600,
+    "ingredients": [
+      {"name": "Corn", "isChecked": false},
+      {"name": "Cream", "isChecked": false},
+      {"name": "Sugar", "isChecked": false},
+      {"name": "Cheese", "isChecked": false},
+      {"name": "Salt and Pepper", "isChecked": false},
+      {"name": "Butter", "isChecked": false},
+      {"name": "Milk", "isChecked": false},
+      {"name": "Flour", "isChecked": false}
+    ]
+  },
+  {
+    "title": "Rhubarb Coffee Cake",
+    "id": 3,
+    "recipeImg": "",
+    "prepTime": 1800,
+    "cookTime": 2700,
+    "ingredients": [
+      {"name": "Flour", "isChecked": false},
+      {"name": "Sugar", "isChecked": false},
+      {"name": "Baking soda", "isChecked": false},
+      {"name": "Salt", "isChecked": false},
+      {"name": "Eggs", "isChecked": false},
+      {"name": "Sour Cream", "isChecked": false},
+      {"name": "Rhubarb", "isChecked": false},
+      {"name": "Butter", "isChecked": false},
+      {"name": "Cinnamon", "isChecked": false}
+    ]
+  },
+  {
+    "title": "Chicken Salad",
+    "id": 4,
+    "recipeImg": "",
+    "prepTime": 300,
+    "cookTime": 600,
+    "ingredients": [
+      {"name": "Chicken", "isChecked": false},
+      {"name": "Mayonnaise", "isChecked": false},
+      {"name": "Celery", "isChecked": false},
+      {"name": "Red Onion", "isChecked": false},
+      {"name": "Chicken Broth", "isChecked": false},
+      {"name": "Dijon Mustard", "isChecked": false},
+      {"name": "Salt and Pepper", "isChecked": false},
+    ]
+  }
+]

@@ -101,12 +101,3 @@ fun WearApp(recipeList: List<RecipeData>) {
     }
 }
 
-
-@Preview(device = Devices.WEAR_OS_SMALL_ROUND, showSystemUi = true)
-@Composable
-fun DefaultPreview() {
-    val context = LocalContext.current
-    val recipeItemsRepository = RecipeItemsRepository(context = context)
-    val recipeList = recipeItemsRepository.getRecipes()
-    WearApp(recipeList)
-}

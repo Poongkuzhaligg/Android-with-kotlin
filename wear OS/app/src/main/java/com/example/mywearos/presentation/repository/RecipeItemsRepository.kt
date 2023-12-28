@@ -7,12 +7,11 @@ import com.google.gson.Gson
 import org.json.JSONArray
 import javax.inject.Inject
 
-class RecipeItemsRepository constructor(
+class RecipeItemsRepository @Inject constructor(
     private val context: Context,
     ) {
-
     fun getRecipes(): List<RecipeData> {
-        val jsonString = context.assets.open("java/com/example/mywearos/presentation/assets/recipe-items.json").bufferedReader().use { it.readText() }
+        val jsonString = context.assets.open("/json/recipe-items.json").bufferedReader().use { it.readText() }
         val gson = Gson()
         val recipeArray = gson.fromJson(jsonString, Array<RecipeData>::class.java)
         return recipeArray.toList()
