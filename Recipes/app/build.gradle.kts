@@ -31,11 +31,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -58,10 +58,10 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.wear.compose:compose-material:1.1.0")
-    implementation("androidx.wear.compose:compose-foundation:1.0.0")
+    implementation("androidx.compose.ui:ui:1.5.4")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.5.4")
+    implementation("androidx.wear.compose:compose-material:1.2.1")
+    implementation("androidx.wear.compose:compose-foundation:1.2.1")
     implementation ("androidx.wear.compose:compose-navigation:1.2.1")
     implementation ("androidx.compose.material:material:1.3.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
@@ -72,6 +72,9 @@ dependencies {
     implementation ("androidx.compose.runtime:runtime:1.5.4")
     implementation ("androidx.compose.runtime:runtime-livedata:1.5.4")
     implementation ("androidx.compose.runtime:runtime-rxjava2:1.5.4")
+
+    //Horologist for Time Picker
+    implementation ("com.google.android.horologist:horologist-composables:0.5.1")
 
 
     val lifecycle_version = "2.6.2"
