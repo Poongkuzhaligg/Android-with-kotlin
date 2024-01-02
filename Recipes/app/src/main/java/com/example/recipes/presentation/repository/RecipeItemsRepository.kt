@@ -13,6 +13,7 @@ import javax.inject.Inject
 
 class RecipeItemsRepository @Inject constructor( @ApplicationContext val context: Context) {
     private val recipes: MutableStateFlow<List<RecipeDetail>> = MutableStateFlow(emptyList())
+
     suspend fun getRecipesFromAssets(): List<RecipeDetail> {
         val jsonString = context.assets.open("json/recipe-items.json").bufferedReader().use { it.readText() }
         val gson = Gson()

@@ -76,6 +76,8 @@ dependencies {
     //Horologist for Time Picker
     implementation ("com.google.android.horologist:horologist-composables:0.5.1")
 
+    //Datastore
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
 
     val lifecycle_version = "2.6.2"
     // ViewModel
