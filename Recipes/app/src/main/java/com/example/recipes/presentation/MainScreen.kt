@@ -15,27 +15,30 @@ import com.example.recipes.presentation.addRecipe.AddRecipeviewModel
 import com.example.recipes.presentation.addRecipe.addInput.AddInputScreen
 import com.example.recipes.presentation.recipeDetails.RecipeDetailScreen
 import com.example.recipes.presentation.recipes.RecipeScreen
+import com.example.recipes.presentation.recipes.RecipeViewModel
 
 @Composable
 fun MainScreen(navController: NavHostController) {
     val addRecipeViewModel: AddRecipeviewModel = hiltViewModel()
+    val recipeViewModel: RecipeViewModel = hiltViewModel()
+
     SwipeDismissableNavHost(
         navController = navController,
         startDestination = "recipes",
         modifier = Modifier.background(MaterialTheme.colors.background)
     ) {
         composable("recipes") {
-            RecipeScreen(navController = navController)
+            RecipeScreen(navController = navController, recipeViewModel)
         }
         composable(
             "recipeDetails/{recipeId}",
             arguments = listOf(navArgument("recipeId") { type = NavType.IntType })
         ) {
             val recipeId = it.arguments?.getInt("recipeId") ?: 0
-            RecipeDetailScreen(recipeId)
+            RecipeDetailScreen(recipeId, recipeViewModel)
         }
         composable("addRecipe") {
-            AddRecipeScreen(navController = navController, addRecipeViewModel)
+            AddRecipeScreen(navController = navController, addRecipeViewModel, recipeViewModel)
         }
         composable(
             "addInput/{inputName}",

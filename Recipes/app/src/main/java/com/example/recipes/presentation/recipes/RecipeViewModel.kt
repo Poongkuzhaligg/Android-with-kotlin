@@ -11,7 +11,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RecipeViewModel @Inject constructor(private val repository: RecipeItemsRepository) : ViewModel() {
+class RecipeViewModel @Inject constructor(private val repository: RecipeItemsRepository) :
+    ViewModel() {
     private val _recipes: MutableStateFlow<List<RecipeDetail>> = MutableStateFlow(emptyList())
     val recipes: StateFlow<List<RecipeDetail>> get() = _recipes
 
@@ -21,22 +22,28 @@ class RecipeViewModel @Inject constructor(private val repository: RecipeItemsRep
             _recipes.value = parsedRecipes
         }
     }
+
     fun fetchRecipes(): StateFlow<List<RecipeDetail>> = recipes
 
-    fun formatTime(timeInSeconds: Int, forDisplay: Boolean): String {
-        val timeInMinutes = timeInSeconds / 60
+    fun formatTime(timeInMinutes: Int, forDisplay: Boolean): String {
         val hours = timeInMinutes / 60
         val minutes = timeInMinutes % 60
-        val seconds = timeInSeconds % 60
 
         return when {
             forDisplay -> {
                 when {
-                    hours > 0 -> "${hours}hr"
+                    hours > 0 -> "${hours} hr ${minutes} min"
                     else -> "${minutes} mins"
                 }
             }
-            else -> String.format("%02d:%02d:%02d", hours, minutes, seconds)
+
+            else -> String.format("%02d:%02d", hours, minutes)
+        }
+    }
+
+    fun addNewRecipe(newRecipe: RecipeDetail) {
+        viewModelScope.launch {
+            _recipes.value += newRecipe
         }
     }
 }

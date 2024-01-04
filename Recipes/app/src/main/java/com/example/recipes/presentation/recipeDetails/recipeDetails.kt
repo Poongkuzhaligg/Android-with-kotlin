@@ -1,14 +1,11 @@
 package com.example.recipes.presentation.recipeDetails
 
-import androidx.wear.compose.material.MaterialTheme
-import androidx.wear.compose.material.Text
-
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
@@ -20,21 +17,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
-import androidx.wear.compose.material.Chip
+import androidx.wear.compose.material.MaterialTheme
+import androidx.wear.compose.material.Text
 import com.example.recipes.presentation.model.RecipeDetail
-import com.example.recipes.presentation.navigation.rememberNavController
 import com.example.recipes.presentation.recipes.RecipeViewModel
 import com.example.recipes.presentation.reusableComponents.ChipLayout
 import kotlinx.coroutines.flow.StateFlow
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
-fun RecipeDetailScreen(recipeId: Int) {
-    val recipeViewModel: RecipeViewModel = hiltViewModel()
+fun RecipeDetailScreen(recipeId: Int, recipeViewModel: RecipeViewModel) {
     val recipesFlow: StateFlow<List<RecipeDetail>> = recipeViewModel.fetchRecipes()
     val recipes: List<RecipeDetail> by recipesFlow.collectAsState(initial = emptyList())
     val recipeDetail = recipes.find { recipeDetail -> recipeDetail.id === recipeId }
@@ -58,19 +50,19 @@ fun RecipeDetailScreen(recipeId: Int) {
                 overflow = TextOverflow.Clip
             )
 
+            Spacer(modifier = Modifier.height(10.dp))
+
             ChipLayout(
                 modifier = Modifier
                     .padding(bottom = 4.dp)
-                    .size(width = 100.dp, height = 30.dp),
+                    .size(width = 110.dp, height = 30.dp),
                 label = "Prep Time: $prepTime"
             )
 
             ChipLayout(
                 modifier = Modifier
                     .padding(bottom = 4.dp)
-                    .size(width = 100.dp, height = 30.dp)
-
-                ,
+                    .size(width = 110.dp, height = 30.dp),
                 label = "Cook Time: $cookTime"
             )
         }
