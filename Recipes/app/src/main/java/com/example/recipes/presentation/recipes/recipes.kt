@@ -96,11 +96,12 @@ fun RecipeScreen(navController: NavController, recipeViewModel: RecipeViewModel)
                     modifier = Modifier
                         .padding(top = 10.dp)
                         .height(30.dp),
+                    contentPadding = PaddingValues(6.dp),
                     shape = RoundedCornerShape(60),
                     label = {
                         Text(
                             text = "Add Recipe",
-                            fontSize = 10.sp,
+                            fontSize = 9.sp,
                             modifier = Modifier.fillMaxWidth(),
                         )
                     },

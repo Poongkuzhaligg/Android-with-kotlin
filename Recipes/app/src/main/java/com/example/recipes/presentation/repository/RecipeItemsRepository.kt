@@ -20,5 +20,28 @@ class RecipeItemsRepository @Inject constructor(@ApplicationContext val context:
         val foodCodeList = jsonArray.map { gson.fromJson(it, RecipeDetail::class.java) }
         return foodCodeList
     }
-    
+
+    fun saveRecipeToInternalStorage(recipes: List<RecipeDetail>) {
+        val file = File(context.filesDir, "saved_recipes.json")
+        val json = Gson().toJson(recipes)
+        file.writeText(json)
+    }
+
+    suspend fun getRecipesFromAllSources(): List<RecipeDetail> {
+        val assetsRecipes = getRecipesFromAssets()
+        val savedRecipes = getRecipeFromInternalStorage() ?: assetsRecipes
+        return savedRecipes
+    }
+
+    private fun getRecipeFromInternalStorage(): List<RecipeDetail>? {
+        val file = File(context.filesDir, "saved_recipes.json")
+        if (file.exists()) {
+            val json = file.readText()
+            return Gson().fromJson(json, Array<RecipeDetail>::class.java)?.toList()
+        } else {
+            return null
+        }
+    }
+
+
 }

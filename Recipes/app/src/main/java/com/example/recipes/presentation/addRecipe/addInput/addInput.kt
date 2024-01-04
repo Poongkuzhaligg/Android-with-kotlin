@@ -1,10 +1,12 @@
 package com.example.recipes.presentation.addRecipe.addInput
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,9 +14,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.IconButton
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
@@ -62,8 +66,9 @@ fun AddInputScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colors.background),
-        contentAlignment = Alignment.Center
-    ) {
+        contentAlignment = Alignment.Center,
+    )
+    {
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -110,8 +115,8 @@ fun AddInputScreen(
                             value = enteredIngredient.value,
                             onValueChange = { enteredIngredient.value = it },
                             modifier = Modifier
-                                .height(40.dp)
-                                .width(140.dp),
+                                .height(35.dp)
+                                .width(130.dp),
                             textStyle = TextStyle(fontSize = 9.sp),
                             label = {
                                 androidx.wear.compose.material.Text(
@@ -139,31 +144,40 @@ fun AddInputScreen(
                             ),
                             shape = RoundedCornerShape(80)
                         )
-                        Spacer(modifier = Modifier.height(10.dp))
-                        FlowRow(Modifier.padding(horizontal = 4.dp)) {
-                            enteredIngredients.forEach { ingredient ->
-                                Chip(
-                                    modifier = Modifier
-                                        .height(22.dp)
-                                        .padding(bottom = 3.dp)
-                                        .background(MaterialTheme.colors.background),
-                                    label = {
-                                        Text(
-                                            ingredient,
-                                            fontSize = 6.sp,
-                                            textAlign = TextAlign.Center
-                                        )
-                                    },
-                                    onClick = { /* Handle chip click if needed */ }
-                                )
-                                Spacer(modifier = Modifier.width(3.dp))
+                        Spacer(modifier = Modifier.height(16.dp))
+                        val listState = rememberScrollState()
+                        Row(
+                            horizontalArrangement = Arrangement.Center,
+                            modifier = Modifier
+                                .height(65.dp)
+                                .verticalScroll(listState)
+                        ) {
+                            FlowRow(Modifier.padding(horizontal = 4.dp)) {
+                                enteredIngredients.forEach { ingredient ->
+                                    Chip(
+                                        modifier = Modifier
+                                            .height(22.dp)
+                                            .padding(bottom = 3.dp)
+                                            .background(MaterialTheme.colors.background),
+                                        contentPadding = PaddingValues(6.dp),
+                                        label = {
+                                            Text(
+                                                ingredient,
+                                                fontSize = 6.sp,
+                                                textAlign = TextAlign.Center
+                                            )
+                                        },
+                                        onClick = { /* Handle chip click if needed */ }
+                                    )
+                                    Spacer(modifier = Modifier.width(3.dp))
+                                }
                             }
                         }
                     }
                 }
             }
 
-            Spacer(modifier = Modifier.padding(top = 16.dp))
+            Spacer(modifier = Modifier.padding(top = 6.dp))
             Row {
                 // Cancel button
                 IconButton(
@@ -201,7 +215,6 @@ fun AddInputScreen(
                                 addRecipeViewModel.setRecipeCookTime(enteredCookTime)
                             }
                         }
-
                         navController.popBackStack()
                     },
                 ) {

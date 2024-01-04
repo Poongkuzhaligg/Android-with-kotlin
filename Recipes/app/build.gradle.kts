@@ -1,8 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id ("kotlin-kapt")
-    id ("com.google.dagger.hilt.android")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -62,36 +62,39 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview:1.5.4")
     implementation("androidx.wear.compose:compose-material:1.2.1")
     implementation("androidx.wear.compose:compose-foundation:1.2.1")
-    implementation ("androidx.wear.compose:compose-navigation:1.2.1")
-    implementation ("androidx.compose.material:material:1.3.0")
+    implementation("androidx.wear.compose:compose-navigation:1.2.1")
+    implementation("androidx.compose.material:material:1.3.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
     implementation("androidx.activity:activity-compose:1.5.1")
-    implementation ("androidx.compose.runtime:runtime-livedata:1.5.4")
+    implementation("androidx.compose.runtime:runtime-livedata:1.5.4")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
 
-    implementation ("androidx.compose.runtime:runtime:1.5.4")
-    implementation ("androidx.compose.runtime:runtime-livedata:1.5.4")
-    implementation ("androidx.compose.runtime:runtime-rxjava2:1.5.4")
+    implementation("androidx.compose.runtime:runtime:1.5.4")
+    implementation("androidx.compose.runtime:runtime-livedata:1.5.4")
+    implementation("androidx.compose.runtime:runtime-rxjava2:1.5.4")
 
     //Horologist for Time Picker
-    implementation ("com.google.android.horologist:horologist-composables:0.5.1")
+    implementation("com.google.android.horologist:horologist-composables:0.5.1")
 
     //Datastore
-    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     val lifecycle_version = "2.6.2"
     // ViewModel
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
 
     // ViewModel utilities for Compose
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
     // GSON
-    implementation ("com.google.code.gson:gson:2.9.1")
+    implementation("com.google.code.gson:gson:2.9.1")
 
     //Hilt Viewmodel
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-android-compiler:2.48")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+
+    //Google play services
+    implementation("com.google.android.gms:play-services-wearable:18.1.0")
 
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")

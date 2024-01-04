@@ -1,8 +1,5 @@
 package com.example.recipes.presentation.ingredients
 
-import androidx.wear.compose.material.MaterialTheme
-import androidx.wear.compose.material.Text
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,7 +9,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.wear.compose.material.MaterialTheme
+import androidx.wear.compose.material.Text
 
+
+//TODO: Display ingredients separately
 @Composable
 fun IngredientsScreen() {
     Box(
