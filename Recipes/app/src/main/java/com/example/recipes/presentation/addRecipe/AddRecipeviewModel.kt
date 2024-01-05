@@ -28,7 +28,7 @@ class AddRecipeviewModel @Inject constructor(private val recipeRepository: Recip
     val isCookTimeSaved: StateFlow<Boolean> = _isCookTimeSaved.asStateFlow()
 
     private val _ingredientsList = MutableStateFlow(mutableListOf<String>())
-    val ingredientsList: StateFlow<List<String>> = _ingredientsList
+    val ingredientsList: StateFlow<List<String>> = _ingredientsList.asStateFlow()
 
 
     fun setRecipeTitle(newTitle: String) {
