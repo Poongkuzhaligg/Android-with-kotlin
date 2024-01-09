@@ -1,45 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-    <!-- Request legacy Bluetooth permissions on older devices. -->
-    <uses-permission android:name="android.permission.BLUETOOTH"
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Request legacy Bluetooth permissions on older devices. -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
         android:maxSdkVersion="33" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
         android:maxSdkVersion="33" />
-
-    <!-- Needed only if app looks for Bluetooth devices.
+    <!--
+ Needed only if app looks for Bluetooth devices.
          If app doesn't use Bluetooth scan results to derive physical
          location information, you can
          <a href="#assert-never-for-location">strongly assert that your app
-         doesn't derive physical location</a>. -->
-    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
-
-    <!-- For app to make the device discoverable to Bluetooth devices. -->
-    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
-
-    <!-- For app to communicate with already-paired Bluetooth devices. -->
+         doesn't derive physical location</a>.
+    -->
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" /> <!-- For app to make the device discoverable to Bluetooth devices. -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" /> <!-- For app to communicate with already-paired Bluetooth devices. -->
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
 
-    <uses-feature android:name="android.hardware.type.watch"
-        />
-    <uses-feature android:name="android.hardware.bluetooth" android:required="false"/>
-    <uses-feature android:name="android.hardware.bluetooth_le" android:required="false"/>
+    <uses-feature android:name="android.hardware.type.watch" />
+
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+
     <application
-        android:name="com.example.contactssyncapp.presentation.ContactSyncApp"
+        android:name=".presentation.ContactSyncApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.DeviceDefault">
+        <service
+            android:name=".presentation.BluetoothService"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <uses-library
             android:name="com.google.android.wearable"
             android:required="true" />
-
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.

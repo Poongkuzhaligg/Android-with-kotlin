@@ -89,6 +89,10 @@ dependencies {
 
     //Google play services
     implementation("com.google.android.gms:play-services-wearable:18.1.0")
+    implementation ("androidx.fragment:fragment-ktx:1.6.4")
+
+    //Bluetooth
+    implementation ("androidx.bluetooth:bluetooth:1.0.0-alpha02")
 
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
