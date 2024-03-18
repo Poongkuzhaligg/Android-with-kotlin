@@ -89,6 +89,7 @@ dependencies {
 
     //Google play services
     implementation("com.google.android.gms:play-services-wearable:18.1.0")
+    implementation ("com.google.android.gms:play-services-bluetooth:17.2.1")
     implementation ("androidx.fragment:fragment-ktx:1.6.4")
 
     //Bluetooth

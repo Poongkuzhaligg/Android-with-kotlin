@@ -22,12 +22,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <uses-feature
         android:name="android.hardware.bluetooth_le"
         android:required="true" />
-
     <uses-feature android:name="android.hardware.type.watch" />
-
     <uses-feature
         android:name="android.hardware.bluetooth_le"
         android:required="true" />
@@ -43,6 +42,10 @@
             android:name=".presentation.BluetoothService"
             android:enabled="true"
             android:exported="true"></service>
+        <service
+            android:name=".presentation.BluetoothService"
+            android:enabled="true"
+            android:exported="true" />
 
         <uses-library
             android:name="com.google.android.wearable"
