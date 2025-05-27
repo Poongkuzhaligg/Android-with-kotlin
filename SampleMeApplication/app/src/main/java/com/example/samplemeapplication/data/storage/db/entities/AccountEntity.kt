@@ -1,0 +1,57 @@
+package com.example.samplemeapplication.data.storage.db
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "account")
+data class AccountEntity(
+    @PrimaryKey
+    val id: String,
+    val accessToken: String,
+    val activityLevel: String,
+    val dashboardMetrics: String,
+    val dashboardType: String,
+    val dob: String,
+    val email: String,
+    val expiresAt: String,
+    val fcmToken: String,
+    val firstName: String,
+    val gender: String,
+    val goalType: String,
+    val goalWeight: String,
+    val healthKit: String,
+    val height: String,
+    val initialWeight: Float,
+    val isActiveAccount: Boolean,
+    val isFitbitOn: Boolean,
+    val isFitbitValid: Boolean,
+    val isGoogleFitOn: Boolean,
+    val isGoogleFitValid: Boolean,
+    val isHealthConnectOn: Boolean,
+    val isHealthKitOn: Boolean,
+    val isLoggedIn: Boolean,
+    val isExpired: Boolean,
+    val isMFPOn: Boolean,
+    val isMFPValid: Boolean,
+    val isStreakOn: Boolean,
+    val isSynced: Boolean,
+    val isUAOn: Boolean,
+    val isUAValid: Boolean,
+    val isWeightlessOn: Boolean,
+    val lastActiveTime: String,
+    val lastName: String,
+    val metPreviousGoal: Boolean,
+    val percent: Float,
+    val preferredInputMethod: String,
+    val refreshToken: String,
+    val shouldSendEntryNotifications: Boolean,
+    val shouldSendWeightInEntryNotifications: Boolean,
+    val streakTimestamp: String,
+    val type: String,
+    val weightUnit: String,
+    val weightlessBodyFat: Float,
+    val weightlessMuscle: Float,
+    val weightlessTimestamp: String,
+    val weightlessWeight: Float,
+    val zipcode: String
+) 
